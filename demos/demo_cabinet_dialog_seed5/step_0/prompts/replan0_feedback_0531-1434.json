@@ -1,0 +1,1 @@
+[{"sender": "Feedback", "message": "[Environment Feedback]:\n- Previous Plan:\nNAME Alice ACTION PICK left_door_handle\nNAME Bob ACTION WAIT\nNAME Chad ACTION PICK right_door_handle\nTask Constraints:\n faild, Chad cannot reach door\n"}, {"sender": "Action", "message": "Alice: PICK left_door_handle\nBob: WAIT\nChad: PICK right_door_handle"}]
