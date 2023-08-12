@@ -1,0 +1,711 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>RoCo: Dialectic Multi-Robot Collaboration with Large Language Models</title> 
+		<meta charset="utf-8" />
+		 <meta name="viewport" content="width=1000">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-W89SB0LDFH"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-W89SB0LDFH');
+		</script>
+
+		<meta property="og:url"           content="https://project-roco.github.io" />
+	    <meta property="og:type"          content="website" />
+	    <meta property="og:title"         content="RoCo: Dialectic Multi-Robot Collaboration with Large Language Models" />
+	    <meta property="og:description"   content="Muli-robot collaboration using LLMs" />
+
+	</head>
+	<body id="top">
+
+		<!-- Main -->
+			<div id="main" style="padding-bottom:1em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto; text-align: justify; color: #808181">
+					<section id="four">
+ 
+						<h1 style="text-align: center; color: #4780bd; font-size: 225%; margin-bottom: 0.25em;">RoCo: Dialectic Multi-<u>Ro</u>bot <u>Co</u>llaboration <br/> with Large Language Models</h1>
+						<!-- TODO: remove names for submission!!!  -->
+						<!-- <h3 style="text-align: center;">
+							<a href="https://mandizhao.github.io">Mandi Zhao, &nbsp  </a>  
+							<a href="https://www.linkedin.com/in/shreeyajain/">Shreeya Jain,  &nbsp  </a>
+							<a href="https://www.cs.columbia.edu/~shurans/">Shuran Song  </a>
+						</h3> -->
+
+						<!-- <h3 style="text-align: center;"><p>Columbia University</p></h3> -->
+						
+						<!-- <h3 style="text-align: center;">
+							<a href="https://arxiv.org/abs/2307.04738">Paper</a> | 
+							&nbsp <a href="https://github.com/MandiZhao/robot-collab">Code</a>
+						</p> -->
+						
+					    <span class="image fit" style="max-width: 100%; margin-top: 0.5em; margin-bottom: 1.5em; margin-left: auto; margin-right: auto">
+							<!-- <img src="images/teaser.jpg" alt="" /> -->
+							<video controls autoplay muted playsinline style="width: 100%;">
+								<source src="roco-teaser-video-small.mp4" > </video>
+						</span>
+						<p style="color: #797878;"> We propose a novel approach to multi-robot collaboration that harnesses the power of pre-trained large language models (LLMs) for both high-level communication and low-level path planning. Robots are equipped with LLMs to discuss and collectively reason task strategies; then generate sub-task plans and task space waypoint paths, which are used by a multi-arm motion planner to accelerate trajectory planning. 
+							We also provide feedback from the environment, such as collision checking, and prompt the LLM agents to improve their plan and waypoints in-context. For evaluation, we introduce RoCoBench, a 6-task benchmark covering a wide range of multi-robot collaboration scenarios, accompanied by a text-only dataset for agent representation and reasoning. 
+							We experimentally demonstrate the effectiveness of our approach: it achieves high success rates across all tasks in RoCoBench and adapts to variations in task semantics. Our dialog setup offers high interpretability and flexibility: in real world experiments, we show RoCo easily incorporates human-in-the-loop, where a user can communicate and collaborate with a robot agent to complete tasks together.
+						</p>
+					  
+						<!-- <h3>Paper & Code</h3> -->
+
+						
+
+						<!-- <div class="12u$"><a href="/"><span class="image fit" style="border: 1px solid; border-color: #888888;"><img src="images/paper-thumbnail.jpeg" alt="" /></span></a></div> -->
+						
+						<!-- Code is available on <a href="/">GitHub</a>. -->
+						
+						<!-- <hr>
+						<h3>Team</h3>
+						<section>
+							<div class="box alt" style="margin-bottom: 1em;">
+								<div class="row 50% uniform" style="width: 90%;">
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="https://mandizhao.github.io/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/mandi_thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Mandi Zhao</a></div>
+
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="https://www.linkedin.com/in/shreeyajain/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/shreeya_thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Shreeya Jain</a></div>
+									
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="https://www.cs.columbia.edu/~shurans/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/shuran_thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Shuran Song</a></div>
+									
+								</div>
+							</div>
+						</section>
+			 
+
+						<hr>
+						<h3>BibTeX</h3>
+						<pre><code>
+							@ </code></pre>
+
+						<hr>
+						<div class="row">
+							<div class="12u$ 12u$(xsmall)" style="text-align: center;">
+								<h3>Technical Summary Video</h3>
+								<iframe id="match-video" width="640" height="360" style="margin-bottom: 2em; margin-left: auto; margin-right: auto; display:block;" src="https://www.youtube.com/embed/EJ98xBJZ9ek" frameborder="0" allowfullscreen></iframe>
+							</div>
+						</div> -->
+						<hr>
+						<h3>RoCoBench </h3>
+						<div class="12u$">
+							<span class="image fit" style="max-width: 90%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<img src="images/teaser.jpg" alt=""> 
+							</span>
+						</div>
+						<p>
+							We introduce RoCoBench, a suite of 6 multi-robot collaboration tasks in a tabletop manipulation setting. The tasks involve common-sense objects that are semantically easy to understand for LLMs, and span a repertoire of collaboration scenarios that require different robot communication and coordination behaviors.
+						</p>
+						
+						<hr>
+						<h3>Method Overview</h3>
+						<div class="12u$">
+							<span class="image fit" style="max-width: 100%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<img src="images/roco-method.jpg" alt="">
+								<!-- <video controls autoplay muted playsinline style="width: 110%;" >
+									<source src="roco-video-fig1.m4v" >
+								</video> -->
+					
+							</span>
+						</div>
+						<p>
+							RoCo consists of three main components: 1) <b>Multi-agent dialog via LLMs</b>: each robot is equipped with an LLM that `talks' on its behalf, enabling a discussion of task strategy. 2) <b>LLM-Generated Sub-task Plan</b>: the dialog ends with a proposal of sub-task plan, including optionally a path of task space waypoints, and environment feedback on invalid plans are provided for the agents to improve. 3) <b>Multi-arm motion planning:</b> A validated sub-task plan then produces goal configurations for the robot arms, which are used by a centralized multi-arm motion planner that outputs trajectories for each robot.
+						</p>
+
+						<div class="row">
+							<div class="12u$ 12u$(xsmall)" style="text-align: center;">
+								<h3>Technical Summary Video</h3>
+								<!-- <iframe id="match-video" width="640" height="360" style="margin-bottom: 2em; margin-left: auto; margin-right: auto; display:block;" 
+								src="https://www.youtube.com/embed/NoaDMlbrrWY" frameborder="0" allowfullscreen>
+								</iframe> -->
+								<iframe id="match-video" width="900" height="500" 
+								style="margin-bottom: 2em; margin-left: auto; margin-right: auto; display:block; text-align: center; align-items: center; justify-content: center;" 
+								src="https://www.youtube.com/embed/OW2bXeb80eE" frameborder="0" allowfullscreen>
+								</iframe>
+								
+							</div>
+						</div>
+
+						
+						<h3>Example Successful Episodes in RoCoBench</h3>
+								<!-- <p>
+								In this task, the robot needs to 
+								<br>① Pickup a randomly placed mug and place it lip down (marked orange).
+								<br>② Rotate the mug such that its handle is pointing left.
+								</p>
+								<video controls muted style="width: 97.6%; margin-left: 0%;" preload="metadata"><source src="videos/mug_flipping_20_web.mp4" type="video/mp4"> </video> -->
+								<div class="box alt" style="margin-bottom: 1em;">
+									<div class="row 33% uniform" style="width: 100%;">
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;" >
+													<source src="demos/demo_sort_dialog_seed2/video_step_3_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Sort Cubes
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_sort_dialog_seed2/response_only.html">[LLM dialog] &nbsp 
+											    <a href="demos/demo_sort_dialog_seed2/full_prompt_and_response.html">[LLM dialog and prompts]</a> 
+											</h4>
+											 
+										</div>
+										
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;">
+													<source src="demos/demo_pack_dialogNoHistory_seed1/video_step_7_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Pack Grocery
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_pack_dialogNoHistory_seed1/response_only.html">[LLM dialog]  &nbsp
+												<a href="demos/demo_pack_dialogNoHistory_seed1/full_prompt_and_response.html">[LLM dialog and prompts]</a>
+											</h4> 
+										</div>
+
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;">
+													<source src="demos/demo_sandwich_dialog_seed8/video_step_7_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Make Sandwich
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_sandwich_dialog_seed8/response_only.html">[LLM dialog]  &nbsp
+												<a href="demos/demo_sandwich_dialog_seed8/full_prompt_and_response.html" >[LLM dialog and prompts]</a>
+											</h4>
+											 
+										</div>
+							
+									</div>
+								</div> 
+								<div class="box alt" style="margin-bottom: 1em;">
+									<div class="row 30% uniform" style="width: 100%;">
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;" >
+													<source src="demos/demo_sweep_dialog_seed0/video_step_6_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Sweep Floor
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_sweep_dialog_seed0/response_only.html">[LLM dialog]  &nbsp
+												<a href="demos/demo_sweep_dialog_seed0/full_prompt_and_response.html">[LLM dialog and prompts]</a>
+											</h4>
+										</div>
+										
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;">
+													<source src="demos/demo_cabinet_dialog_seed5/video_step_3_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Arrange Cabinet
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_cabinet_dialog_seed5/response_only.html">[LLM dialog]  &nbsp
+												<a href="demos/demo_cabinet_dialog_seed5/full_prompt_and_response.html">[LLM dialog and prompts]</a>
+											</h4>
+										</div>
+
+										<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.3%">
+											<span class="image fit" style="margin-bottom: 0.5em;">
+												<video controls autoplay muted playsinline style="width: 110%;">
+													<source src="demos/demo_rope_dialog_seed4/video_step_2_full_episode_6seconds.m4v" > </video>
+											</span>
+											Task: Move Rope
+											<br>
+											<h4 style="font-size: 0.8em; color: #7db6f7">
+												<a href="demos/demo_rope_dialog_seed4/response_only.html">[LLM dialog]  &nbsp
+												<a href="demos/demo_rope_dialog_seed4/full_prompt_and_response.html">[LLM dialog and prompts]</a>
+											</h4>
+										</div>
+							
+									</div>
+								</div>
+						<hr>
+						<h3>Real World Experiments</h3>
+						<div style="margin-bottom:20px">
+							We validate RoCo on a real world setup, where a robot arm collaborates with a human to complete a sorting blocks task.
+							We run RoCo with the modification that only the robot agent is controlled by a GPT-4, and it discusses with a human user that interacts with part of the task workspace.  
+							For perception, we use the OWL-ViT object detection model to generate scene description.
+							We evaluate 2 main variation categories: 1) object initialization, i.e. initial block locations are randomized for each run; 2) task order specification, where the agents are asked to follow a fixed order to move the blocks. 
+						</div>
+						<div class="12u$" style="font-size: 1em; line-height: 1.5em; text-align: center">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<video controls autoplay loop muted style="width: 90%; display: inline-block">
+									<source src="demos-real/1-no-order-faster.mp4" type="video/mp4">
+								</video>
+								<p>Successful episode with object initialization and no task order specification</p>
+							</span>
+						</div>
+						<div class="12u$" style="font-size: 1em; line-height: 1.5em; text-align: center">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<video controls autoplay loop muted style="width: 90%; display: inline-block">
+									<source src="demos-real/2-order-faster.mp4" type="video/mp4">
+								</video>
+								<p>Successful episode with task order specification <i>"place blocks in order blue, yellow, red"</i></p>
+							</span>
+						</div>
+						<div style="margin-bottom: 20px">
+							The task performance is primarily bottle-necked by incorrect object detection from OWL-ViT, which leads to failure if an incorrect object is picked up or if the task ends early because no objects were detected on the table or inside cups.
+							Thus, we also evaluate two types of human behaviors: first is an oracle human that corrects mistakes in the OWL-ViT-guided scene descriptions and the robot's responses; second is an imperfect human that provides no feedback to those errors. 
+						</div>
+						<div class="12u$" style="font-size: 1em; line-height: 1.5em; text-align: center">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<video controls autoplay loop muted style="width: 90%; display: inline-block">
+									<source src="demos-real/3-failure-analysis.mp4" type="video/mp4">
+								</video>
+								<p>Failure episode with task order specification <i>"place red block first"</i></p>
+							</span>
+						</div>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 45% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 47%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay muted playsinline style="width: 110%;" >
+											<source src="demos-real/4-failure-analysis.mp4" > </video>
+									</span>
+									Failure episode with improper human
+								</div>
+								
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 47%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay muted playsinline style="width: 110%;">
+											<source src="demos-real/4-failure-analysis-oracle.mp4" > </video>
+									</span>
+									Successful episode with oracle human
+								</div>
+							</div>
+						</div>
+							
+						<hr>
+						<!-- <div>
+							<span class="image fit" style="max-width: 22%; display: inline-block">
+								<img src="images/real-interact.jpg" alt="">
+							</span>
+							<video id="1x_speed" controls autoplay loop muted style="width: 50%; display: inline-block"><source src="images/videos/real-world-reasoning.mp4" type="video/mp4"></video>
+							<span class="image fit" style="max-width: 22%; display: inline-block">
+								<img src="images/real-reason.jpg" alt="">
+							</span>
+						</div> -->
+						<!-- <div>
+							<img style="width: 24%" src="images/real-interact.jpg" alt="">
+							<video id="1x_speed" controls autoplay loop muted style="width: 50%; display: inline-block"><source src="images/videos/real-world-reasoning.mp4" type="video/mp4"></video>
+							<img style="width: 23.8%" src="images/real-reason.jpg" alt="">
+						</div>
+
+						<p>We test the trained model on a real-world busyboard with robot interactions.
+						   We show that our model is able to infer the action affordances from real-world visual observations and reason inter-object functional relations through robot interactions.
+						   The video shows reasoning result with respect to interaction steps; the right image shows reasoning result on a few more configurations.
+						   More details can be found in the supplementary materials.
+						</p> -->
+						
+						<h3> RoCoBench-Text: Multi-Agent Representation and Reasoning Dataset </h3>
+							<div>We curate a text-based dataset that evaluates an LLM's agent representation and task reasoning ability, without requiring robotic environment interaction. 
+								RoCoBench-Text builds on data from our evaluation runs on RoCoBench, and contains a series of additional questions that are more open-ended and go beyond simply finding the next best action plan.
+								This dataset contains yes/no, multiple-choice or short question-answering questions that evaluate a range of different reasoning abilities, we explain each category below. Click expand to view each example questions in the dataset.
+							</div>
+							
+								<a style="color: #787878; font-size: 1em;">
+								1. Self-Knowledge - Agent Capability </a> 
+								<div>
+									This category contains 57 questions, based on Sort Cubes task from RoCoBench. By asking an LLM to explain an agent's own capability under the given task constraints, these questions evaluate how well the LLM represents and establishes the identity of individual agents. 	
+								</div>
+									<details>
+										<summary style="font-size: 0.9em; margin-left: 30px;">
+											Example#1: Sort Cubes - Alice</summary>
+										<p style="font-size: 0.9em;  line-height: 1.2em; ">
+											### System Prompt ### <br>
+											7 panels on the table, ordered left to right: panel1,...,panel7. They form a straight assembly line, panel1 is closed to panel2 and farthest from panel7.<br>
+											You are robot Alice in front of panel2. You are collaborating with Bob, Chad to sort cubes into their target panels. The task is NOT done until all three cubes are sorted.<br>
+											At current round:<br>
+											blue_square is on panel5<br>
+											pink_polygon is on panel7<br>
+											yellow_trapezoid is on panel1<br>
+											Your goal is to place blue_square on panel2, but you can only reach panel1, panel2, panel3: this means you can only pick cubes from these panels, and can only place cubes on these panels.<br>
+											Never forget you are Alice! Never forget you can only reach panel1, panel2, panel3!<br>
+											<br>
+											### User Prompt ### <br>
+											You are Alice. List all panels that are out of your reach. Think step-by-step. Answer with a list of panel numbers, e.g. [1, 2] means you can't reach panel 1 and 2.<br>
+											<br>
+											### Solution ### <br> 
+											<a style="color: #787878; background-color: #e1f8d1;"> 
+											[4, 5, 6, 7]</a><br> 
+										</p> 
+									</details>
+									<details>
+										<summary style="font-size: 0.9em; margin-left: 30px;">
+											Example#2: Sort Cubes - Bob</summary>
+										<p style="font-size: 0.9em;  line-height: 1.2em; ">
+											### System Prompt ### <br>
+											7 panels on the table, ordered left to right: panel1,...,panel7. They form a straight assembly line, panel1 is closed to panel2 and farthest from panel7.<br>
+											You are robot Bob in front of panel4. You are collaborating with Alice, Chad to sort cubes into their target panels. The task is NOT done until all three cubes are sorted.<br>
+											At current round:<br>
+											blue_square is on panel5<br>
+											pink_polygon is on panel7<br>
+											yellow_trapezoid is on panel3<br>
+											Your goal is to place pink_polygon on panel4, but you can only reach panel3, panel4, panel5: this means you can only pick cubes from these panels, and can only place cubes on these panels.<br>
+											Never forget you are Bob! Never forget you can only reach panel3, panel4, panel5!<br>
+											<br>
+											### User Prompt ### <br>
+											You are Bob. At the current round, which cube(s) among blue_square,pink_polygon,yellow_trapezoid can you reach? Think step-by-step.
+											Answer with a list of all cube names that you can reach, answer None if you can't reach any cube.
+											<br>
+											### Solution ### <br> 
+											<a style="color: #787878; background-color: #e1f8d1;"> 
+											blue_square, yellow_trapezoid </a><br> 
+										</p> 
+									</details>
+					
+							<a style="color: #787878;">
+								2. Self-Knowledge - Memory Retrival </a>
+								<div>
+									This category contains 44 total questions, based on Make Sandwich and Sweep Floor tasks from RoCoBench. By providing a history of agent dialog and environment actions and asking an LLM to reason about an agent's past, the questions evaluates how well the LLM performs memory retrieval and reasoning for individual agents. 	
+								</div>
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example: Sweep Floor - Alice</summary>
+									<p style="font-size: 0.8em;  line-height: 1.2em; ">
+										### System Prompt ### <br> 
+										[History] <br>
+										== Round#0 == <br>
+										[Chat History] <br>
+										[Alice]: <br>
+										Bob, let's sweep up the blue_cube first since it's closest to me. I'll MOVE to the blue_cube, and you should do the same. After that, we can proceed with the SWEEP action. What do you think?<br>
+										[Bob]:<br>
+										Alice, I think we should go for the green_cube first since it's closer to me. Let's both MOVE to the green_cube, and then we can SWEEP it up. What do you think?<br>
+										<br>
+										NAME Bob ACTION MOVE green_cube<br>
+										PROCEED<br>
+										[Alice]:<br>
+										Bob, I understand the green_cube is closer to you, but the blue_cube is closer to me and we can save time by going for it first. Let's both MOVE to the blue_cube, and then we can SWEEP it up. What do you think?<br>
+										<br>
+										NAME Alice ACTION MOVE blue_cube<br>
+										PROCEED<br>
+										[Bob]:<br>
+										Alice, I see your point. Let's both MOVE to the blue_cube first, and then we can SWEEP it up.<br>
+										<br>
+										NAME Bob ACTION MOVE blue_cube<br>
+										PROCEED<br>
+										[Alice]:<br>
+										EXECUTE<br>
+										NAME Alice ACTION MOVE blue_cube<br>
+										NAME Bob ACTION MOVE blue_cube<br>
+										[Executed Action]<br>
+										Alice: MOVE blue_cube<br>
+										Bob: MOVE blue_cube<br>
+										== Round#1 ==<br>
+										[Omitted]<br>
+										== Round#2 ==<br>
+										[Omitted] <br>
+										== Current Round ==<br> 
+										You are a robot called Alice, and you are collaborating with Bob to sweep up all the cubes on the table.<br>
+										You hold a dustpan.<br>
+										To sweep up a cube, you and Bob must get close to it by MOVE to opposite sides of the same cube. You must WAIT at the same cube while Bob SWEEPs.<br>
+										Talk with Bob to coordinate together and decide which cube to sweep up first.<br>
+										At the current round:<br>
+										Your gripper is at (0.8, 0.1, 0.2), holding dustpan, in front of green_cube with distance: 0.31<br>
+										red_cube is at (0.8, 0.3, 0.2), inside dustpan;<br>
+										green_cube is at (1.0, 0.6, 0.2), on the table;<br>
+										blue_cube is at (0.7, 0.3, 0.2), inside dustpan;<br> 
+										<br>
+										### User Prompt ### <br>
+										You are Alice. Based on [History] and all the past executed actions, what's the exact order of cubes that got swept into the dustpan? List them in the exact order, first to last, don't list cubes that are not swept yet. For example, output 'yellow_cube, blue_cube'. Think step-by-step.<br>
+										### Solution ### <br>
+										<a style="color: #787878; background-color: #e1f8d1;"> 
+										blue_cube, red_cube</a><br>
+									</p> 
+								</details>
+
+
+							<a style="color: #787878">
+							3. Communication - Inquiry </a>
+							<div>
+								This category contains 41 multiple-choice questions, based on Arrange Cabinet task from RoCoBench. The questions ask an LLM to speak as an agent and choose the most appropriate inquiry to seek information that helps their task reasoning. 	
+							</div>	
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#1: Arrange Cabinet - Alice</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										You are a robot Alice, collaborating with Bob, Chad to pick a mug and a cup out of cabinet, and place them on correct coasters. <br>
+										Both left and right cabinet doors should be opened and held open, while anything inside can be picked. You must coordinate together to complete the task. <br>
+										Remember that you can only reach left_door_handle, mug, cup<br>
+										At current round: <br>
+										left door is open, right door is open,<br>
+										mug is inside cabinet; cup is inside cabinet;<br>
+										Your gripper is holding left_door_handle,<br>
+										Bob's gripper is holding right_door_handle,<br>
+										Chad's gripper is holding nothing,<br>
+										<br>
+										### User Prompt ### <br>
+										You are thinking about picking right_door_handle. Who and what should you ask to confirm this action? <br>
+										Reason about the task and select the best response from the options below. You must first output a single option number, then give a very short, one-line reason for why you choose it. For example: output '[A] because it's the most appropriate.'<br> 
+										[A] tell others about this plan because you are free and right_door_handle is within your reach.<br>
+										<a style="color: #787878; background-color: #e1f8d1;"> 
+										[B] since right_door_handle is not within your reach, you ask if Bob or Chad can reach it.</a><br>
+										[C] you can reach right_door_handle, but your gripper is occupied, so you ask if Bob or Chad can help since they are free.<br>
+										[D] all three of your grippers are occupied, so it's better to wait until later.<br>
+									</p> 
+								</details>
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#2: Arrange Cabinet - Bob</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										You are a robot Bob, collaborating with Alice, Chad to pick a mug and a cup out of cabinet, and place them on correct coasters.<br>
+										Both left and right cabinet doors should be opened and held open, while anything inside can be picked. You must coordinate together to complete the task.<br>
+										Remember that you can only reach right_door_handle<br>
+										At current round:<br>
+										left door is closed, right door is closed,<br>
+										mug is inside cabinet; cup is inside cabinet;<br>
+										Alice's gripper is holding nothing,<br>
+										Your gripper is holding nothing,<br>
+										Chad's gripper is holding nothing<br>
+										<br>
+										### User Prompt ### <br>
+										You are thinking about picking right_door_handle. Who and what should you ask to confirm this action?<br>
+										Reason about the task and select the best response from the options below. You must first output a single option number, then give a very short, one-line reason for why you choose it. For example: output '[A] because it's the most appropriate.'<br>
+										<a style="color: #787878; background-color: #e1f8d1;"> 
+											[A] tell others about this plan because you are free and right_door_handle is within your reach.
+										</a><br>
+										[B] since right_door_handle is not within your reach, you ask if Alice or Chad can reach it.<br>
+										[C] you can reach right_door_handle, but your gripper is occupied, so you ask if Alice or Chad can help since they are free.<br>
+										[D] all three of your grippers are occupied, so it's better to wait until later.<br>
+									</p> 
+								</details>
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#3: Arrange Cabinet - Chad</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										You are a robot Chad, collaborating with Alice, Bob to pick a mug and a cup out of cabinet, and place them on correct coasters.<br>
+										Both left and right cabinet doors should be opened and held open, while anything inside can be picked. You must coordinate together to complete the task.<br>
+										Remember that you can only reach right_door_handle, mug, cup<br>
+										At current round:<br>
+										left door is closed, right door is closed,<br>
+										mug is inside cabinet; cup is inside cabinet;<br>
+										Alice's gripper is holding nothing,<br>
+										Bob's gripper is holding nothing,<br>
+										Your gripper is holding nothing,<br>
+										<br>
+										### User Prompt ### <br>
+										You are thinking about picking right_door_handle. Who and what should you ask to confirm this action?<br>
+										Reason about the task and select the best response from the options below. You must first output a single option number, then give a very short, one-line reason for why you choose it. For example: output '[A] because it's the most appropriate.'<br>
+										<a style="color: #787878; background-color: #e1f8d1;"> 
+											[A] tell others about this plan because you are free and right_door_handle is within your reach.
+										</a><br>
+										[B] since right_door_handle is not within your reach, you ask if Alice or Bob can reach it.<br>
+										[C] you can reach right_door_handle, but your gripper is occupied, so you ask if Alice or Bob can help since they are free.<br>
+										[D] all three of your grippers are occupied, so it's better to wait until later.<br>
+									</p> 
+								</details>
+
+							<a style="color: #787878">
+								4. Communication - Respond </a>
+								<div>
+									This category contains 96 yes/no questions, based on Sort Cubes task from RoCoBench. The questions ask an LLM to speak for one agent and choose the most appropriate response to other agents under a given task context.	
+								</div>	
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#1: Sort Cubes - Alice</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										7 panels on the table, ordered left to right: panel1,...,panel7. They form a straight assembly line, panel1 is closed to panel2 and farthest from panel7.<br>
+										You are a robot Alice in front of panel2. You are collaborating with Bob, Chad to sort cubes into their target panels. The task is NOT done until all three cubes are sorted.<br>
+										At current round:<br>
+										blue_square is on panel3<br>
+										pink_polygon is on panel3<br>
+										yellow_trapezoid is on panel5<br>
+										Your goal is to place blue_square on panel2, but you can only reach panel1, panel2, panel3: this means you can only pick cubes from these panels, and can only place cubes on these panels.<br>
+										You can help others by moving other cubes that are within your reachable panels.<br>
+										<br>
+										### User Prompt ### <br>
+										You are Alice. Chad needs to put yellow_trapezoid on panel6, and asked you for help.<br>
+										How should you respond? Think step-by-step, remember you can only reach panel1, panel2, panel3. If you can help, answer YES and propose a consice plan to help. If you can't help, you must answer NO.<br>
+										YES <br>
+										<a style="color: #787878; background-color: #e1f8d1;">NO</a><br>
+									</p> 
+								</details>
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#2: Sort Cubes - Bob</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										7 panels on the table, ordered left to right: panel1,...,panel7. They form a straight assembly line, panel1 is closed to panel2 and farthest from panel7.<br>
+										You are a robot Bob in front of panel4. You are collaborating with Alice, Chad to sort cubes into their target panels. The task is NOT done until all three cubes are sorted.<br>
+										At current round:<br>
+										blue_square is on panel3<br>
+										pink_polygon is on panel3<br>
+										yellow_trapezoid is on panel5<br>
+										Your goal is to place pink_polygon on panel4, but you can only reach panel3, panel4, panel5: this means you can only pick cubes from these panels, and can only place cubes on these panels.
+										You can help others by moving other cubes that are within your reachable panels.<br>
+										<br>
+										### User Prompt ### <br>
+										You are Bob. Chad needs to put yellow_trapezoid on panel6, and asked you for help.<br>
+										How should you respond? Think step-by-step, remember you can only reach panel1, panel2, panel3. If you can help, answer YES and propose a consice plan to help. If you can't help, you must answer NO.<br>
+										
+										<a style="color: #787878; background-color: #e1f8d1;">YES</a><br>
+										NO<br>
+									</p> 
+								</details>
+								<details>
+									<summary style="font-size: 0.9em; margin-left: 30px;">
+										Example#3: Sort Cubes - Chad</summary>
+									<p style="font-size: 0.9em;  line-height: 1.2em; ">
+										### System Prompt ### <br>
+										7 panels on the table, ordered left to right: panel1,...,panel7. They form a straight assembly line, panel1 is closed to panel2 and farthest from panel7.<br>
+										You are a robot Chad in front of panel6. You are collaborating with Alice, Bob to sort cubes into their target panels. The task is NOT done until all three cubes are sorted.<br>
+										At current round:<br>
+										blue_square is on panel3<br>
+										pink_polygon is on panel3<br>
+										yellow_trapezoid is on panel5<br>
+										Your goal is to place yellow_trapezoid on panel6, but you can only reach panel5, panel6, panel7: this means you can only pick cubes from these panels, and can only place cubes on these panels.
+										You can help others by moving other cubes that are within your reachable panels.<br>
+										UserPrompt<br>
+										<br>
+										### User Prompt ### <br>
+										You are Chad. Bob needs to put pink_polygon on panel4, and asked you for help.<br>
+										How should you respond? Think step-by-step, remember you can only reach panel1, panel2, panel3. If you can help, answer YES and propose a consice plan to help. If you can't help, you must answer NO.<br>
+										YES<br>
+										<a style="color: #787878; background-color: #e1f8d1;">NO</a><br>
+										
+									</p> 
+								</details>
+
+							<a style="color: #787878">
+							5. Adaptation: Unexpected Scenarios</a>
+							<div>
+								This category contains 31 questions in the format of multiple choice (A, B, C), based on 3 RoCoBench tasks: Arrange Cabinet, Make Sandwich, Sweep Floor. The questions hypothesize unexpected situations that were not specified in the task context, and evaluate an LLM-represented agent's ability to choose the most appropriate response. 	
+							</div>
+							<details>
+								<summary style="font-size: 0.9em; margin-left: 30px;">
+									Example#1: Arrange Cabinet</summary>
+								<p style="font-size: 0.9em;  line-height: 1.2em; ">
+									### System Prompt ###<br>
+									You are a robot Alice, collaborate with Bob, Chad to pick a mug and a cup out of cabinet, and place them on correct coasters. 
+									Both left and right cabinet doors should be OPENed and held open, while anything inside can be PICKed. You must coordinate to complete the task most efficiently while avoiding collision.
+									You can only reach left_door_handle, mug, cup. <br>
+									At current round: left door is open, right door is open, mug is inside cabinet; cup is inside cabinet. 
+									Your gripper is holding left_door_handle, Bob's gripper is holding right_door_handle, Chad's gripper is holding nothing. <br>
+									<br>
+									### User Prompt ###<br>
+									You are Alice. Your gripper is stuck at holding left_door_handle and can't move anywhere else. What would you say to Bob and Chad? Select exactly one option from below. You must output a single option number (e.g. [D], then give a very short, one-line reason for why you choose it.
+									Options: <br>
+									<a style="color: #787878; background-color: #e1f8d1;">[A]: My gripper is stuck but it shouldn't affect us completing the task, since I need to hold the left door open.</a> <br>
+									[B]: Guys, my gripper is stuck, we can't complete the task anymore.<br>
+									[C]: Guys, I need to fix my stuck gripper, please pause and wait for me.</p> 
+							</details>
+							<details >
+								<summary style="font-size: 0.9em; margin-left: 30px;">
+									Example#2: Make Sandwich</summary>
+								<p style="font-size: 0.9em;  line-height: 1.2em; "> 
+									### System Prompt ###<br>
+									You are a robot Dave, collaborating with Chad to make a [vegetarian_sandwich].
+									Food items must be stacked following this order: bread_slice1, tomato, cheese, cucumber, bread_slice2, where bread_slice1 must be PUT on cutting_board.
+									You must stay on left side of the table! This means you can only PICK food from left side, and Chad can only PICK from the other side.
+									Only one robot can PUT at a time, so you must coordinate with Chad.
+									At the current round: You can see these food items are on your reachable side:<br>
+									bread_slice1: on cutting_board<br>
+									bacon: on your side<br>
+									cheese: atop tomato<br>
+									tomato: atop bread_slice1<br>
+									cucumber: atop cheese<br>
+									Your gripper is holding bread_slice2<br>
+									<br>
+									### User Prompt ###<br>
+									You are Dave. Chad said he just saw bread_slice2 sitting on his side of the table. What should you say to Chad? 
+									Select exactly one option from below. You must first output a single option number (e.g. [D]), then give a very short, one-line reason for why you choose it.
+									Options:
+									[A]: Sounds good Chad, go ahead and pick it up.<br>
+									<a style="color: #787878; background-color: #e1f8d1;">[B]: I suggest we use my slice since I already have it in my gripper, it would finish the task faster.</a><br>
+									[C]: Thanks Chad, you can pick and place it to finish the sandwich since I don't have bread_slice2 on my side. <br> 
+							</details>
+							<details >
+								<summary style="font-size: 0.9em; margin-left: 30px;">
+									Example#3: Sweep Floor</summary>
+								<p style="font-size: 0.9em;  line-height: 1.2em; "> 
+									### System Prompt ###<br>
+									You are a robot called Bob, and you are collaborating with Alice to sweep up all the cubes on the table.<br>
+									You hold a broom and Alice holds a dustpan. To sweep up a cube, you and Alice must get close to it by MOVE to opposite sides of the same cube. You must move to the same cube as Alice before she sweeps it up. Then Alice can dump the cubes into trash_bin.<br>
+									Talk with Alice to coordinate together and decide which cube to sweep up first.<br>
+									At the current round: red_cube is on the table; green_cube is on the table; blue_cube is on the table<br>
+									<br>
+									### User Prompt ### <br>
+									You are Bob. Alice just told you the trash_bin is too far for her to dump the cubes, but the trash_bin is within your reach. What would you say to Alice? Reason about the task and select the best response from the three options below. You must first output a single option number, then give a very short, one-line reason for why you choose it. For example: output '[A] because it gives the most appropriate response.' Options:<br>
+									[A]: Alice, since I can reach the trash_bin, I will do the dumping instead.<br>
+									[B]: Alice, since my gripper is free, I can help you move the trasn_bin closer.<br>
+									<a style="color: #787878; background-color: #e1f8d1;">
+									[C]: Alice, I can help you move trash_bin closer to you, but first I need to put my broom down.</a><br> 
+							</details>
+							 
+						<!-- <p>Compared to the predictive agent which relies on correct future state predictions from the dynamics model, the relation agent generalizes better on novel objects. 
+							However, the relation agent struggles in handling one-to-many relations since it cannot infer the exact action position and direction. 
+							Our method(BusyBot) combines the advantages of both agents.
+						</p>
+						
+						<hr>
+						<h3>Applications in Simulation Home Environments</h3>
+						<div class="12u$">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<img src="images/room.jpg" alt="">
+							</span>
+						</div>
+						<p>To demonstrate the learned skills can be applied beyond the BusyBoard environment, we further test our reasoning model in 2 kitchen scenes from <a href="https://ai2thor.allenai.org/">AI2THOR</a>. 
+							We observe that the trained reasoning model from BusyBot is able to infer the correct inter-object relations through interactions, without the need of fine-tuning.
+							The result demonstrates the generalization ability of our proposed environment and algorithm to new domains and applications.
+						</p> -->
+
+						<!-- <div class="12u$">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<img src="images/sim-novel-config-goal-conditioned.jpg" alt="">
+							</span>
+						</div>
+						<p>More results on busyboards with novel configurations and seen object instances. The predictive agent achieves better performance on one-to-many tasks with seen object instances by leveraging future predictions to select the correct action to apply on the trigger object. In contrast, the relation agent can only identify the trigger object but not the exact action (e.g., which link to interact with or which direction to push).
+						</p>
+						<div class="12u$">
+							<span class="image fit" style="max-width: 80%; border: 0px solid; border-color: #888888; margin-left: auto; margin-right: auto">
+								<img src="images/sim-novel-object-goal-conditioned.jpg" alt="">
+							</span>
+						</div>
+						<p>More results on busyboards with novel configurations and novel object instances. The relation agent performs slightly better than the predictive agent on boards with novel objects, when the dynamics model fails to predict the correct next state. This shows that inter-object functional relationship can generalize to scenarios when future predictions are not reliable enough to assist planning. -->
+ 
+
+						<hr>
+						<!-- <h3>Acknowledgements</h3>
+						<p>
+							This work was supported in part by NSF Award #2143601, #2037101, and #2132519. We would like to thank Google for the UR5 robot hardware.  The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies, either expressed or implied, of the sponsors. 
+							The authors would like to thank Zeyi Liu, Zhenjia Xu, Huy Ha, Cheng Chi, Samir Gadre, Mengda Xu, and Dominik Bauer for their fruitful discussions throughout the project and for providing helpful feedback on initial drafts of the manuscript.
+						</p>
+						<hr>
+						<h3>BibTeX</h3>  -->
+<!-- <pre class="bibtex"> 
+<code>@misc{mandi2023roco,
+	title={RoCo: Dialectic Multi-Robot Collaboration with Large Language Models}, 
+	author={Zhao Mandi and Shreeya Jain and Shuran Song},
+	year={2023},
+	eprint={2307.04738},
+	archivePrefix={arXiv},
+	primaryClass={cs.RO}
+}</code>  
+</pre> -->
+						<!-- <h3>Contact</h3>
+				        <p>Please reach out to <a href="https://mandizhao.github.io/">Mandi Zhao</a>: mandi.zhao AT cs.columbia.edu</p> -->
+						
+					</section> 
+					
+			</div>
+			<a href="google90ae9e7961795b04.html"></a>
+
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
