@@ -224,6 +224,41 @@
 							
 									</div>
 								</div>
+
+						<br>
+						<h4>
+							Example Episodes with Feedback
+						</h4>
+						<p>
+							We provide additional episodes that highlight the LLM's utilization of environment feedback for improving its sub-task plans. 
+							Click on each hyperlinks to view the full prompt and responses. 
+							<br>
+							1.[Sort Cubes] Feedback: invalid output format; invalid action. 
+								<a href="demos/demo_sort_dialog_seed10_feedback/response_only.html"">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_sort_dialog_seed10_feedback/full_prompt_and_response.html">[prompts]</a>
+							<br>
+							2.[Pack Grocery] Feedback: planned more than one action per robot; 
+								<a href="demos/demo_pack_dialogNoHistory_seed10_feedback/response_only.html">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_pack_dialogNoHistory_seed10_feedback/full_prompt_and_response.html">[prompts]</a>
+							<br>
+							3.[Make Sandwich] Feedback: object out of reach; fails to follow recipe; wrong pick-place order.
+								<a href="demos/demo_sandwich_dialog_seed10_feedback/response_only.html">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_sandwich_dialog_seed10_feedback/full_prompt_and_response.html">[prompts]</a>
+							<br>
+							4.[Sweep Floor] Feedback: proposed action is not supported.
+								<a href="demos/demo_sweep_dialog_seed15_feedback/response_only.html">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_sweep_dialog_seed15_feedback/full_prompt_and_response.html">[prompts]</a>
+							<br>
+							5.[Arrange Cabinet] Feedback: invalid action (beyond agent capability; wrong pick-place order).
+								<a href="demos/demo_cabinet_dialog_seed16_feedback/response_only.html">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_cabinet_dialog_seed16_feedback/full_prompt_and_response.html">[prompts]</a>
+							<br>
+							6.[Move Rope] Feedback: failed IK on waypoint steps.
+								<a href="demos/demo_rope_dialog_seed13_feedback/response_only.html">[LLM response + feedback]  &nbsp</a>
+								<a href="demos/demo_rope_dialog_seed13_feedback/full_prompt_and_response.html">[prompts]</a>
+						</p>
+
+						
 						<hr>
 						<h3>Real World Experiments</h3>
 						<div style="margin-bottom:20px">
@@ -282,26 +317,7 @@
 						</div>
 							
 						<hr>
-						<!-- <div>
-							<span class="image fit" style="max-width: 22%; display: inline-block">
-								<img src="images/real-interact.jpg" alt="">
-							</span>
-							<video id="1x_speed" controls autoplay loop muted style="width: 50%; display: inline-block"><source src="images/videos/real-world-reasoning.mp4" type="video/mp4"></video>
-							<span class="image fit" style="max-width: 22%; display: inline-block">
-								<img src="images/real-reason.jpg" alt="">
-							</span>
-						</div> -->
-						<!-- <div>
-							<img style="width: 24%" src="images/real-interact.jpg" alt="">
-							<video id="1x_speed" controls autoplay loop muted style="width: 50%; display: inline-block"><source src="images/videos/real-world-reasoning.mp4" type="video/mp4"></video>
-							<img style="width: 23.8%" src="images/real-reason.jpg" alt="">
-						</div>
-
-						<p>We test the trained model on a real-world busyboard with robot interactions.
-						   We show that our model is able to infer the action affordances from real-world visual observations and reason inter-object functional relations through robot interactions.
-						   The video shows reasoning result with respect to interaction steps; the right image shows reasoning result on a few more configurations.
-						   More details can be found in the supplementary materials.
-						</p> -->
+					
 						
 						<h3> RoCoBench-Text: Multi-Agent Representation and Reasoning Dataset </h3>
 							<div>We curate a text-based dataset that evaluates an LLM's agent representation and task reasoning ability, without requiring robotic environment interaction. 
