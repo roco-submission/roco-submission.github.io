@@ -1,0 +1,1 @@
+[{"sender": "Feedback", "message": "[Environment Feedback]:\n- Previous Plan:\nNAME Alice ACTION MOVE trash_bin\nNAME Bob ACTION WAIT\nTask Constraints:\n faild, MOVE target must be a cube, you can directly dump without moving to trash_bin\n"}, {"sender": "Action", "message": "Alice: MOVE trash_bin\nBob: WAIT"}]
