@@ -1,0 +1,1 @@
+[{"sender": "Feedback", "message": "[Environment Feedback]:\n- Previous Plan:\nNAME Chad ACTION PUT cucumber cheese\nNAME Dave ACTION PICK tomato\n- Goal Step Chad (-0.02, 0.53, 0.41); Dave (0.61, 0.60, 0.32):\n   - Reachability failed: Out of reach: Dave (0.61, 0.60, 0.32); \n  "}, {"sender": "Action", "message": "Chad: PUT cucumber cheese\nDave: PICK tomato"}]
